@@ -20,10 +20,10 @@ before_install:
   - docker build -t lasse1900/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm test
+  - docker run -e CI=true lasse1900/react-test npm test
 
 deploy:
   provider: script
   script: bash ./deploy.sh
   on:
-    branch: master
+    branch: main
