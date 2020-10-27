@@ -1,0 +1,24 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+build:
+  artifacts:
+    - image: aseel/multi-client
+      context: client
+      sync:
+        manual:
+          - src: "**/*.css"
+            dest: .
+          - src: "**/*.html"
+            dest: .
+          - src: "**/*.js"
+            dest: .
+      docker:
+        dockerfile: Dockerfile.dev
+  local:
+    push: false
+deploy:
+  kubectl:
+    manifests:
+      - k8s/client-deployment.yaml
+      - k8s/server-deployment.yaml
+      - k8s/worker-deployment.yaml
