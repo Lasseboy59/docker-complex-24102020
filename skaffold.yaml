@@ -2,7 +2,7 @@ apiVersion: skaffold/v2beta4
 kind: Config
 build:
   artifacts:
-    - image: aseel/multi-client
+    - image: lasse1900/multi-client
       context: client
       sync:
         manual:
